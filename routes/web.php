@@ -7,6 +7,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Auth::routes(); aaaa
+//Auth::routes(); fff
 
 Route::get('/home', 'HomeController@index')->name('home');
