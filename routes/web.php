@@ -1,7 +1,33 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+
+
+
+
+
+
+Route::resource('produtos', 'ProdutoController');    //->middleware('auth');
+
 /*
+
+Route::delete('produtos/{id}/delete', 'ProdutosController@delete')->name('produtos.delete');
+
+Route::put('produtos/{id}/update', 'ProdutosController@update')->name('produtos.update');
+
+Route::get('produtos/{id}/edit', 'ProdutosController@edit')->name('produtos.edit');
+
+Route::get('produtos/create', 'ProdutosController@create')->name('produtos.create');
+
+Route::get('produtos/{id}', 'ProdutosController@show')->name('produtos.show');
+
+Route::get('produtos', 'ProdutosController@index')->name('produtos.index');
+
+Route::post('produtos', 'ProdutosController@storage')->name('produtos.storage');
+
+
+
 Route::middleware([])->group(function() {
 
     Route::prefix('admin')->group(function(){
