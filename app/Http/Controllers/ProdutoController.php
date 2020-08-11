@@ -10,11 +10,11 @@ class ProdutoController extends Controller
 
     function __construct(Request $request)
     {
-        $this->request = $request;
+        //$this->request = $request;
         //$this->middleware('auth')->only('create');  //Só vai pedir pra autenticar no create
-        $this->middleware('auth')->except([
-            'index', 'show'
-    ]);
+        //$this->middleware('auth')->except([
+           // 'index', 'show'
+    //]);
     }
 
 
@@ -28,8 +28,9 @@ class ProdutoController extends Controller
     {
         $teste = 123;
         $teste2 = 5463;
-        $teste3 = '';
-        return view('admin.pages.produtos.index', compact('teste','teste2', 'teste3'));
+        $teste3 = [1, 2, 3, 4, 5];
+        $produtos = ['TV', 'Geladeira', 'PC', 'Impressora'];
+        return view('admin.pages.produtos.index', compact('teste','teste2', 'teste3', 'produtos'));
     }
 
     /**
@@ -39,7 +40,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.produtos.create');
     }
 
     /**
@@ -50,7 +51,12 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->except(['_token','nome']));
+        //dd($request->input('ffff', 'vvvv')); //Caso não seja encontrado o primeiro parâmetro, ele exibe o segundo
+        //dd($request->has('nome'));
+        //d($request->descricao);
+        //dd($request->all());
+        //dd($request->only('nome'));
     }
 
     /**
@@ -72,7 +78,7 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.produtos.edit', compact('id'));
     }
 
     /**
@@ -84,7 +90,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd("Editando o produto {$id}");
     }
 
     /**

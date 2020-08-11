@@ -4,6 +4,41 @@
 
 @section('content')
     <h1>Listando produtos</h1>
+
+    @component('admin.components.card')
+        @slot('teste', "<h1>Título do Slot</h1>")
+            
+        Testando os Bagulhos
+    @endcomponent
+
+    <a href="{{route('produtos.create')}}">Cadastro</a>
+
+
+
+
+
+
+
+
+    @include('admin.includes.alert', ['conteudo' => 'Include'])
+
+
+  
+    @forelse ($produtos as $produto)
+        <p class="@if($loop->first) last @endif">{{$produto}}</p>
+    @empty
+        <p>Não existem produtos cadastrados.</p>
+    @endforelse
+
+
+<!-- 
+ 
+    @if (isset($produtos))
+        @foreach ($produtos as $produto)
+            <p>{{$produto}}</p>
+        @endforeach
+    @endif
+
     @if ($teste === "123")
         É igual
     @elseif($teste === 123)
@@ -47,6 +82,19 @@
         @default
             Padrão
     @endswitch
-
+    -->
 @endsection
 
+@push('styles')
+    <style>
+        .last{
+            background: gray;
+        }
+    </style>
+@endpush
+
+@push('scripts')
+    <script>
+        document.body.style.background = '#e4e6e8';
+    </script>
+@endpush
