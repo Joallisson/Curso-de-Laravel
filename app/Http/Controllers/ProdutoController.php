@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateProdutoRequest;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -49,9 +50,34 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        dd($request->except(['_token','nome']));
+    public function store(StoreUpdateProdutoRequest $request){
+        dd("OK");
+
+
+        /*
+        $request->validate([
+            'nome' => 'required|min:3|max:255',
+            'descricao' => 'nullable|min:3|max:1000',
+            'foto' => 'required|image'
+        ]);
+
+        dd("OK");
+
+
+        if($request->file('foto')->isValid()){
+            $nomeArquivo = $request->nome . "." . $request->foto->extension();
+            //dd($request->foto->store('Produtos'));
+            dd($request->foto->storeAS('Produtos', $nomeArquivo));
+
+            //dd($request->foto->extension());
+        }
+*/
+
+
+
+        //dd($request->file('foto'));
+
+        //dd($request->except(['_token','nome']));
         //dd($request->input('ffff', 'vvvv')); //Caso não seja encontrado o primeiro parâmetro, ele exibe o segundo
         //dd($request->has('nome'));
         //d($request->descricao);
@@ -62,7 +88,7 @@ class ProdutoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  App\Http\Requests\StoreUpdateProdutoRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function show($id)
