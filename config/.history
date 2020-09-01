@@ -1,0 +1,52 @@
+2 + 2
+composer require laravel/ui
+C:\laragon\www\
+$ composer require laravel/ui
+ipconfig
+composer --version
+C:\xampp\htdocs\Composer
+composer init
+phpunity/phpunity
+composer require --dev phpunit/phpunit ^7
+composer require --dev phpunit/phpunit ^9
+./vendor/bin/phpunit --version
+composer diagnose
+composer update
+phpunityλ phpunity install
+phpunity install
+composer require phpunit/phpunit
+monolog update
+ composer require league/omnipay omnipay/paypal
+composer require mercadopago/dx-php
+cd composer
+cd C:\xampp\htdocs\Composer
+composer require monolog/monolog
+.vs
+code .
+composer
+composer create-project --prefer-dist laravel/laravel app-laravel
+git init
+php artisan help migrate
+php artisan --version
+php artisan serve
+php artisan
+php artisan list
+git push origin
+php artisan make:seeder UsersTableSeeder
+php artisan db:seed
+php artisan db:seed --class=UsesTableSeeder
+php artisan clear-compiled
+php artisan optimize
+php artisan db:seed --class=UsersTableSeeder
+php artisan make:factory CategoryFactory --Models\\User
+php artisan make:factory CategoryFactory --model=Models\\User
+php artisan make:model Models\\Product
+php artisan make:model Models\Product -m
+cls
+php artisan migratre
+php artisan migrate
+php artisan make:factory ProductFactory --model=Models\Product
+php artisan make:seeder ProductTableSeeder
+composer dump-autoload
+php artisan db:seed --class=ProductsTableSeeder
+git add .

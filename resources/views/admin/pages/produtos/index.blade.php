@@ -11,7 +11,30 @@
         Testando os Bagulhos
     @endcomponent
 
-    <a href="{{route('produtos.create')}}">Cadastro</a>
+    <a href="{{route('produtos.create')}}" class="btn btn-primary">Cadastro</a> <br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+               <th>Nome: </th>
+               <th>Preço: </th>
+               <th width="100px">Ações: </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($produtos as $produto)
+                <tr>
+                    <td>{{$produto->nome}}</td>
+                    <td>{{$produto->price}}</td>
+                    <td>
+                        <a href="{{ route('produtos.show', $produto->id) }}">Detalhes</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    {!! $produtos->links() !!}
 
 
 
@@ -19,6 +42,22 @@
 
 
 
+
+
+    @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+{{--
 
     @include('admin.includes.alert', ['conteudo' => 'Include'])
 
@@ -30,8 +69,6 @@
         <p>Não existem produtos cadastrados.</p>
     @endforelse
 
-
-<!-- 
  
     @if (isset($produtos))
         @foreach ($produtos as $produto)
@@ -82,8 +119,8 @@
         @default
             Padrão
     @endswitch
-    -->
-@endsection
+   
+
 
 @push('styles')
     <style>
@@ -97,4 +134,5 @@
     <script>
         document.body.style.background = '#e4e6e8';
     </script>
-@endpush
+@endpush 
+--}}

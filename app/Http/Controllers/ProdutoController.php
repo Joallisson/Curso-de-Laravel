@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateProdutoRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -27,11 +28,14 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $teste = 123;
-        $teste2 = 5463;
-        $teste3 = [1, 2, 3, 4, 5];
-        $produtos = ['TV', 'Geladeira', 'PC', 'Impressora'];
-        return view('admin.pages.produtos.index', compact('teste','teste2', 'teste3', 'produtos'));
+        //$produtos = ['TV', 'Geladeira', 'PC', 'Impressora'];
+
+        //$produtos = Product::latest()->paginate();    //Últimos registros que serão mostrados primeiros
+        $produtos = Product::paginate();
+
+        return view('admin.pages.produtos.index', [
+            'produtos' => $produtos
+        ]);
     }
 
     /**
@@ -51,7 +55,11 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUpdateProdutoRequest $request){
-        dd("OK");
+        $data = $request->only(['nome', 'price', 'descricao']);
+
+        Product::create($data);
+
+        return redirect()->route('produtos.index');
 
 
         /*
@@ -93,7 +101,15 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        return "Exibindo produto: {$id}";
+        //$produto = Product::where('id', $id)->first();
+        
+        if (!$produto = Product::find($id)) {
+            return redirect()->back();
+        }
+
+        return view('admin.pages.produtos.show', [
+            'produto' => $produto
+        ]);
     }
 
     /**
